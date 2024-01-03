@@ -15,7 +15,7 @@ class _LightingState extends State<Lighting> {
   @override
   Widget build(BuildContext context) {
     final lightAddController = Provider.of<CabController>(context);
-
+String header = 'lights';
     return Scaffold(
       backgroundColor: HexColor("D8F3DC"),
       body: SizedBox(
@@ -251,6 +251,7 @@ class _LightingState extends State<Lighting> {
                                                 .lightContactController.text),
                                             lightAddController
                                                 .lightLocationController.text,
+                                                header,
                                             'lights')
                                         .then(
                                           (value) => lightAddController

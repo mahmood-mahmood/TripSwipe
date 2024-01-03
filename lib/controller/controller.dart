@@ -12,6 +12,7 @@ import 'package:tripswipe/model/car_model.dart';
 import 'package:tripswipe/model/rent_car_bike_model.dart';
 import 'package:tripswipe/model/user_model.dart';
 import 'package:tripswipe/views/login.dart';
+import 'package:tripswipe/views/users/usershomepage.dart';
 
 class Controller extends ChangeNotifier {
   //--------------------------FIREBASE------------------------------------------
@@ -93,6 +94,24 @@ class Controller extends ChangeNotifier {
       );
     }
   }
+
+  TextEditingController passwordResetController = TextEditingController();
+
+  Future<void> passwordReset(String email,context)async{
+    try {
+     await firebaseAuth.sendPasswordResetEmail(email: email);
+      myCustomAlert(context, '', email, () {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => const UserHome(),
+            ),
+            (route) => false);
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
 
   //---------------------------LOGIN CONTROLLER--------------------------------
 
@@ -430,11 +449,42 @@ class Controller extends ChangeNotifier {
   }
 
   List<Map<String, dynamic>> accessoriesList = [];
+  List<Map<String, dynamic>> filteredaccessoriesList = [];
   List<String> collections = [
     'wheels',
     'lights',
     'bodyParts',
     'helmets',
+  ];
+
+
+  void addToFiltered(){
+    filteredaccessoriesList.clear();
+    filteredaccessoriesList.addAll(accessoriesList);
+   
+  }
+
+  void filterAcccessoryList(String query){
+    print('filtering-----------');
+    filteredaccessoriesList.clear();
+    if (query.isEmpty) {
+      filteredaccessoriesList.addAll(accessoriesList);
+    }else{
+      for (var item in accessoriesList) {
+        if (item['accessoryType'].toString().toLowerCase().contains(query.toLowerCase())) {
+
+          filteredaccessoriesList.add(item);
+          
+        }
+       }
+    }
+    // notifyListeners();
+  }
+
+  List<Map<String,dynamic>> items = [
+    {"name":"Rohith","place":'Kozhikode'},
+    {"name":"Akbar","place":'Malappuram'},
+    {"name":"Rohith","place":'Kozhikode'},
   ];
 
   Future<void> fetchAccessories() async {

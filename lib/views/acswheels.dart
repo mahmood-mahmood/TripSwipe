@@ -10,7 +10,7 @@ class Acswheels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final wheelsAddController = Provider.of<CabController>(context);
-
+    String header = 'wheels';
     return Scaffold(
       backgroundColor: HexColor("D8F3DC"),
       body: SizedBox(
@@ -263,6 +263,7 @@ class Acswheels extends StatelessWidget {
                                                 .wheelContactController.text),
                                             wheelsAddController
                                                 .wheelLocationController.text,
+                                                header,
                                             'wheels')
                                         .then(
                                           (value) => wheelsAddController

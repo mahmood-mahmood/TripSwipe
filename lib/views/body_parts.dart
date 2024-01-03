@@ -11,6 +11,7 @@ class BodyParts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bodyPartsAddController = Provider.of<CabController>(context);
+    String header = 'body parts';
     return Scaffold(
       backgroundColor: HexColor("D8F3DC"),
       body: SizedBox(
@@ -265,6 +266,7 @@ class BodyParts extends StatelessWidget {
                                             bodyPartsAddController
                                                 .bodyPartsLocationController
                                                 .text,
+                                                header,
                                             'bodyParts')
                                         .then(
                                           (value) => bodyPartsAddController

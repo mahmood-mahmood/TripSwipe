@@ -5,6 +5,7 @@ class AccessoriesModel {
   String photo;
   int contact;
   String location;
+  String accessoryType;
 
   AccessoriesModel({
     this.accessoriesID,
@@ -13,6 +14,7 @@ class AccessoriesModel {
     required this.photo,
     required this.contact,
     required this.location,
+    required this.accessoryType,
   });
 
   factory AccessoriesModel.fromMap(Map<String, dynamic> map) {
@@ -23,6 +25,7 @@ class AccessoriesModel {
       photo: map['photo'],
       contact: map['contact'],
       location: map['location'],
+      accessoryType: map['accessoryType'],
     );
   }
 
@@ -34,6 +37,7 @@ class AccessoriesModel {
       'photo': photo,
       'contact': contact,
       'location': location,
+      'accessoryType': accessoryType,
     };
   }
 }

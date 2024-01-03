@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
+import 'package:tripswipe/controller/controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:latlong2/latlong.dart';
 
-class hatchbackdriver extends StatefulWidget {
-  hatchbackdriver(
+class DriverDetails extends StatefulWidget {
+  DriverDetails(
       {super.key,
       required this.img,
       required this.name,
@@ -13,22 +15,27 @@ class hatchbackdriver extends StatefulWidget {
       required this.hat,
       required this.carnam,
       required this.numplate,
-      required this.req});
+      required this.req,
+      required this.phone,});
   var img;
   var name;
   var rat;
   var hat;
-  var carnam, numplate, req;
+  var carnam, numplate;
+ var req;
+ var phone;
 
   @override
-  State<hatchbackdriver> createState() => _hatchbackdriverState();
+  State<DriverDetails> createState() => _DriverDetailsState();
 }
 
-class _hatchbackdriverState extends State<hatchbackdriver> {
+class _DriverDetailsState extends State<DriverDetails> {
   var pass = true;
+  
 
   @override
   Widget build(BuildContext context) {
+    final driverController = Provider.of<Controller>(context,listen: false);
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -37,7 +44,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
           children: [
             FlutterMap(
               mapController: MapController(),
-              options: MapOptions(
+              options: const MapOptions(
                 keepAlive: true,
                 initialCenter: LatLng(10.977824672450085, 76.20258134232894),
                 initialZoom: 11.2,
@@ -47,7 +54,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                   urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'com.example.app',
                 ),
-                MarkerLayer(markers: [
+                const MarkerLayer(markers: [
                   Marker(
                     width: 30.0,
                     height: 30.0,
@@ -76,7 +83,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  icon: Icon(Icons.arrow_back)),
+                  icon: const Icon(Icons.arrow_back)),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 68.0, left: 15, right: 20),
@@ -93,43 +100,43 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                         borderRadius: BorderRadius.circular(5)),
                     child: Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Image.asset("img/locateaarow.png"),
                             Image.asset("img/locatearwrownded.png"),
-                            SizedBox(
+                            const SizedBox(
                               height: 2,
                             ),
                             Image.asset("img/locatearwrownded.png"),
-                            SizedBox(
+                            const SizedBox(
                               height: 2,
                             ),
                             Image.asset("img/locatearwrownded.png"),
-                            SizedBox(
+                            const SizedBox(
                               height: 2,
                             ),
                             Image.asset("img/locatearwrownded.png"),
-                            SizedBox(
+                            const SizedBox(
                               height: 2,
                             ),
                             Image.asset("img/redrowndwerd.png"),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
                         Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 7,
                             ),
-                            Row(
+                            const Row(
                               children: [
                                 Text(
                                   "Carrear carodos street tordenar",
@@ -138,7 +145,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 20.0),
+                                  padding: EdgeInsets.only(left: 20.0),
                                   child: Icon(
                                     Icons.close_rounded,
                                     color: Colors.grey,
@@ -148,23 +155,23 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                             ),
                             Row(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   width: 15,
                                 ),
-                                Text(
+                                const Text(
                                   "de Provenicad",
                                   style: TextStyle(
                                       color: Colors.grey,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 75,
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 45.0),
                                   child: IconButton(
                                       onPressed: () {},
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.close_rounded,
                                         color: Colors.grey,
                                       )),
@@ -186,7 +193,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                   width: 315,
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Container(
@@ -202,7 +209,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                           ),
                           child: Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Row(
@@ -218,7 +225,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                             const EdgeInsets.only(left: 5.0),
                                         child: Text(
                                           widget.name,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold,
                                               fontSize: 17,
@@ -233,25 +240,25 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                       ),
                                       Row(children: [
                                         widget.rat,
-                                        Text(
+                                        const Text(
                                           "Rating",
                                           style: TextStyle(fontSize: 12),
                                         )
                                       ]),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 65,
                                   ),
                                   CircleAvatar(
                                     radius: 25,
-                                    backgroundImage: widget.img,
+                                    backgroundImage: NetworkImage(widget.img),
                                   )
                                 ],
                               ),
-                              Padding(
+                              const Padding(
                                 padding:
-                                    const EdgeInsets.only(left: 8.0, right: 8),
+                                    EdgeInsets.only(left: 8.0, right: 8),
                                 child: Divider(
                                   thickness: 0.6,
                                   color: Colors.grey,
@@ -294,14 +301,14 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 55,
                                   ),
                                   Column(
                                     children: [
                                       Text(
                                         widget.req,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.w700),
                                       ),
@@ -316,17 +323,16 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                                           BorderRadius.circular(
                                                               25)))),
                                           onPressed: () {
-//
-//
-//
+                                            driverController.callingFunction(widget.phone.toString());
+
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             Icons.call,
                                             color: Colors.white,
                                           )),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   )
                                 ],
@@ -468,7 +474,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                         color: Colors.black26, width: 2),
                                     borderRadius: BorderRadius.circular(10),
                                     color: HexColor("E9BC1D")),
-                                child: Text(
+                                child: const Text(
                                   "Confirm your ride",
                                   style: TextStyle(
                                       fontWeight: FontWeight.w500,
@@ -490,7 +496,7 @@ class _hatchbackdriverState extends State<hatchbackdriver> {
                                         color: Colors.black26, width: 2),
                                     borderRadius: BorderRadius.circular(10),
                                     color: Colors.black),
-                                child: Text(
+                                child: const Text(
                                   "Cancel your ride",
                                   style: TextStyle(
                                       color: Colors.white,

@@ -33,6 +33,7 @@ class Accessories extends StatelessWidget {
                           offset: Offset(2, 2),
                           blurRadius: 4)
                     ]),
+                    
               ),
               const SizedBox(
                 height: 15,

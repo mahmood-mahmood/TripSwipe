@@ -8,6 +8,8 @@ import 'package:tripswipe/views/users/primesuv/prmsuvcnm.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../primehathback/hatchbackdriverconform.dart';
+
 class PrimSUVDriv extends StatelessWidget {
   const PrimSUVDriv({Key? key}) : super(key: key);
 
@@ -190,27 +192,19 @@ class PrimSUVDriv extends StatelessWidget {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          prmsuvcnfm(
-                                                              img: drivers[index]
-                                                                  ['img'],
-                                                              name:
-                                                                  drivers[index]
-                                                                      ['name'],
+                                                           DriverDetails(
+                                                              img: suvController.carsList[index].photo,
+                                                              name: suvController.carsList[index].providerName,
                                                               rat:
                                                                   drivers[index]
                                                                       ['rat'],
-                                                              type:
-                                                                  drivers[index]
-                                                                      ['Suv'],
-                                                              carnam: drivers[
-                                                                      index]
-                                                                  ['carnam'],
-                                                              numplate: drivers[
-                                                                      index]
-                                                                  ['numplate'],
+                                                              hat:suvController.carsList[index].carType,
+                                                              carnam:suvController.carsList[index].brandName,
+                                                              numplate:suvController.carsList[index].vehNumber,
                                                               req:
                                                                   drivers[index]
-                                                                      ['req']),
+                                                                      ['req'],
+                                                                      phone: suvController.carsList[index].contact),
                                                     ));
                                               },
                                               child: Container(

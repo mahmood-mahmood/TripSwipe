@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:tripswipe/controller/controller.dart';
+import 'package:tripswipe/views/login.dart';
 import 'package:tripswipe/views/users/editpassworduer.dart';
 import 'package:tripswipe/views/users/editprof.dart';
 
@@ -50,7 +51,6 @@ class _UserProfState extends State<UserProf> {
                 const SizedBox(
                   height: 95,
                 ),
-
                 const CircleAvatar(
                   radius: 55,
                   backgroundImage: AssetImage("img/pro.png"),
@@ -65,7 +65,6 @@ class _UserProfState extends State<UserProf> {
                       fontSize: 16,
                       color: Colors.white),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -75,11 +74,9 @@ class _UserProfState extends State<UserProf> {
                     ),
                   ],
                 ),
-
                 const SizedBox(
                   height: 10,
                 ),
-
                 Card(
                     elevation: 10,
                     child: Container(
@@ -176,36 +173,6 @@ class _UserProfState extends State<UserProf> {
                         ],
                       ),
                     )),
-
-                // Padding(
-                //   padding: const EdgeInsets.all(20.0),
-                //   child: Text(
-                //     'Profile',
-                //     style: TextStyle(
-                //       fontSize: 35.0,
-                //       letterSpacing: 1.5,
-                //       color: Colors.white,
-                //       fontWeight: FontWeight.w600,
-                //
-                //     ),
-                //   ),
-                // ),
-                // Padding(
-                //   padding: const EdgeInsets.only(top: 108.0),
-                //   child: Container(
-                //     width: MediaQuery.of(context).size.width / 2,
-                //     height: MediaQuery.of(context).size.width / 2,
-                //     padding: const EdgeInsets.all(10.0),
-                //     decoration: BoxDecoration(
-                //       shape: BoxShape.circle,
-                //       color: Colors.white,
-                //       // image: DecorationImage(
-                //       //   image: AssetImage(null),
-                //       //   fit: BoxFit.cover,
-                //       // ),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
             Padding(
@@ -225,7 +192,7 @@ class _UserProfState extends State<UserProf> {
               child: Card(
                   elevation: 10,
                   child: Container(
-                    height: 120,
+                    // height: 120,
                     width: 290,
                     decoration: BoxDecoration(
                         color: Colors.black,
@@ -251,7 +218,7 @@ class _UserProfState extends State<UserProf> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const editpas(),
+                                    builder: (context) => const EditPass(),
                                   ));
                             },
                             child: const ListTile(
@@ -261,6 +228,24 @@ class _UserProfState extends State<UserProf> {
                               ),
                               title: Text(
                                 "Password",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            )),
+                        InkWell(
+                            onTap: () {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => const Login(),
+                                  ),
+                                  (route) => false);
+                            },
+                            child: const ListTile(
+                              leading: Icon(
+                                Icons.logout,
+                                color: Colors.white,
+                              ),
+                              title: Text(
+                                "Logout",
                                 style: TextStyle(color: Colors.white),
                               ),
                             )),

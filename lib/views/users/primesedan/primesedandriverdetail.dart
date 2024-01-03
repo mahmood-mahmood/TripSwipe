@@ -8,6 +8,8 @@ import 'package:tripswipe/views/users/primesedan/primesedanconform.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../primehathback/hatchbackdriverconform.dart';
+
 class SedanDriver extends StatelessWidget {
   const SedanDriver({Key? key}) : super(key: key);
 
@@ -190,28 +192,19 @@ class SedanDriver extends StatelessWidget {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          sedanconform(
-                                                              img:
-                                                                  drivers[index]
-                                                                      ['img'],
-                                                              name:
-                                                                  drivers[index]
-                                                                      ['name'],
+                                                          DriverDetails(
+                                                              img: sedanController.carsList[index].photo,
+                                                              name: sedanController.carsList[index].providerName,
                                                               rat:
                                                                   drivers[index]
                                                                       ['rat'],
-                                                              type:
-                                                                  drivers[index]
-                                                                      ['sed'],
-                                                              carnam: drivers[
-                                                                      index]
-                                                                  ['carnam'],
-                                                              numplate: drivers[
-                                                                      index]
-                                                                  ['numplate'],
+                                                              hat:sedanController.carsList[index].carType,
+                                                              carnam:sedanController.carsList[index].brandName,
+                                                              numplate:sedanController.carsList[index].vehNumber,
                                                               req:
                                                                   drivers[index]
-                                                                      ['req']),
+                                                                      ['req'],
+                                                                      phone: sedanController.carsList[index].contact),
                                                     ));
                                               },
                                               child: Container(

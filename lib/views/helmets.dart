@@ -11,6 +11,7 @@ class Helmets extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final helmetAddController = Provider.of<CabController>(context);
+    String header = 'helmets';
     return Scaffold(
       backgroundColor: HexColor("D8F3DC"),
       body: SizedBox(
@@ -262,6 +263,7 @@ class Helmets extends StatelessWidget {
                                                 .helmetContactController.text),
                                             helmetAddController
                                                 .helmetLocationController.text,
+                                                header,
                                             'helmets')
                                         .then(
                                           (value) => helmetAddController

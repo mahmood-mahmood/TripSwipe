@@ -196,27 +196,19 @@ class _HatchbackDrivState extends State<HatchbackDriv> {
                                                     context,
                                                     MaterialPageRoute(
                                                       builder: (context) =>
-                                                          hatchbackdriver(
-                                                              img: drivers[index]
-                                                                  ['img'],
-                                                              name:
-                                                                  drivers[index]
-                                                                      ['name'],
+                                                          DriverDetails(
+                                                              img: carTypeController.carsList[index].photo,
+                                                              name: carTypeController.carsList[index].providerName,
                                                               rat:
                                                                   drivers[index]
                                                                       ['rat'],
-                                                              hat:
-                                                                  drivers[index]
-                                                                      ['hat'],
-                                                              carnam:
-                                                                  drivers[index]
-                                                                      ['hat'],
-                                                              numplate: drivers[
-                                                                      index]
-                                                                  ['numplate'],
+                                                              hat:carTypeController.carsList[index].carType,
+                                                              carnam:carTypeController.carsList[index].brandName,
+                                                              numplate:carTypeController.carsList[index].vehNumber,
                                                               req:
                                                                   drivers[index]
-                                                                      ['req']),
+                                                                      ['req'],
+                                                                      phone: carTypeController.carsList[index].contact),
                                                     ));
                                               },
                                               child: Container(

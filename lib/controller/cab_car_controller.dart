@@ -468,6 +468,7 @@ class CabController extends ChangeNotifier {
     String photo,
     int contact,
     String location,
+    String accessoryType,
     String collectionName,
   ) async {
     try {
@@ -482,6 +483,7 @@ class CabController extends ChangeNotifier {
         photo: photo,
         contact: contact,
         location: location,
+        accessoryType: accessoryType
       );
 
       docs.set(_accessoriesModel!.toMap(docs.id));
